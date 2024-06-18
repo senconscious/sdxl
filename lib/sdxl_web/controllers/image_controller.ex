@@ -2,7 +2,7 @@ defmodule SdxlWeb.ImageController do
   use SdxlWeb, :controller
 
   def create(conn, %{"text" => image_text}) do
-    System.cmd("./sd", ["-m", "./models/SDXL-Flash.safetensors", "-H", "512", "-W", "512", "-p", image_text, "--vae", "./models/sdxl_vae.safetensors", "--steps", "5", "--cfg-scale", "4.0"])
+    System.cmd("./sd", ["-m", "/models/SDXL-Flash.safetensors", "-H", "512", "-W", "512", "-p", image_text, "--vae", "/models/sdxl_vae.safetensors", "--steps", "5", "--cfg-scale", "4.0"])
     generated_image = File.read!("output.png")
 
     conn
